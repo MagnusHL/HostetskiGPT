@@ -1,0 +1,48 @@
+Hier ist die Arbeitsanweisung ohne das Präfix #:
+
+Arbeitsanweisung für das FreeScout ChatGPT Integration Module (HostetskiGPT)
+
+Hauptziel: Die FreeScout ChatGPT-Integration soll nahtlos mit FreeScout v1.8.156 funktionieren und die folgenden Funktionen unterstützen:
+	1.	Erstellen und Verwalten von Einstellungen (API-Key, Start-Prompt).
+	2.	Generierung von AI-Antworten für eingehende Nachrichten.
+	3.	Unterstützung mehrerer Prompts und Antwortoptionen.
+	4.	Implementierung einer optionalen Grammatikprüfung.
+
+Schritt 1: Konfiguration und API-Setup
+	•	Implementiere eine Methode zum Speichern des ChatGPT API-Keys in der Konfiguration.
+	•	Setze eine Funktion, die eine Startnachricht zur Orientierung der AI im Kontext definiert (z.B. als Support-Agent).
+
+Schritt 2: Antwortgenerierung (API-Endpunkt)
+	•	Entwickle einen Endpunkt zur Verarbeitung eingehender Nachrichten und zur Generierung von Antworten durch ChatGPT.
+	•	Ein Lade-Icon oder -Text sollte angezeigt werden, solange die AI-Antwort generiert wird, um Verzögerungen zu signalisieren.
+
+Schritt 3: Verwaltung mehrerer Prompts
+	•	Füge ein konfigurierbares Prompt-Management hinzu, das mehrere Rollen für die AI definiert (z.B. Support, Sales).
+	•	Verwende eine Schnittstelle, die den Wechsel zwischen verschiedenen Prompts erlaubt, abhängig vom Kundentyp.
+
+Schritt 4: Optionale Grammatikprüfung
+	•	Implementiere eine Grammatikprüfungsfunktion, die vor dem Senden der AI-Antwort aktiviert werden kann.
+	•	Diese Funktion sollte fehlerhafte Antworten vor der Rückmeldung an den Kunden korrigieren.
+
+Schritt 5: Auswahl mehrerer Antworten in einer Konversation
+	•	Implementiere eine Funktion, die dem User im Support die Auswahl zwischen mehreren AI-Antworten bietet.
+	•	Die Antwortoptionen sollten sich bei Bedarf ändern lassen, um Kontext oder Sprachstil anzupassen.
+
+Kompatibilitätsprüfung mit FreeScout v1.8.156
+	•	Prüfe, ob das Modul mit FreeScout Version 1.8.156 läuft und behebe Inkompatibilitäten.
+	•	Falls erforderlich, passe das Modul so an, dass alle bisherigen Funktionen stabil mit dieser Version laufen.
+
+Diese Anweisungen sind als klare Entwicklungsziele für das Projekt formuliert und helfen, das Plugin gezielt weiterzuentwickeln und anzupassen.
+
+You carefully provide accurate, factual, thoughtful answers, and excel at reasoning.
+Lösche keine Kommentare aus Dateien, die du bearbeitest.
+
+- Follow the user’s requirements carefully & to the letter.
+- First think step-by-step - describe your plan for what to build in pseudocode, written out in great detail.
+- Confirm, then write code!
+- Always write correct, up to date, bug free, fully functional and working, secure, performant and efficient code.
+- Focus on readability over being performant.
+- Fully implement all requested functionality.
+- Leave NO todo’s, placeholders or missing pieces.
+- Be concise. Minimize any other prose.
+- If you think there might not be a correct answer, you say so. If you do not know the answer, say so instead of guessing.

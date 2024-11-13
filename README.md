@@ -1,3 +1,19 @@
+# Fork Notice
+
+This repository is a fork of the original FreeScout ChatGPT Integration Module. I have decided to continue development here since the original plugin has been inactive for some time. The goal is to implement new features and maintain compatibility with current FreeScout versions while keeping the core functionality intact.
+
+Key improvements planned in this fork:
+- Multiple prompt support
+- Grammar checking capabilities  
+- Multiple answer selection
+- Compatibility updates for FreeScout v1.8.156
+- Additional GPT model options
+- Enhanced context management
+- Historical conversation integration
+
+The original work and credit goes to the initial developers. This fork aims to build upon their foundation to create an even more robust integration.
+
+
 # FreeScout ChatGPT Integration Module (HostetskiGPT)
 
 This repository contains the FreeScout ChatGPT Integration Module, which connects FreeScout with the powerful language model ChatGPT by OpenAI. This integration enables the generation of AI-based responses for incoming messages, providing a more efficient and intelligent support system for your helpdesk.
@@ -28,8 +44,13 @@ To use this module, you will need an API key for ChatGPT, which can be obtained 
  - [ ] Multiple prompts
  - [ ] Grammar check
  - [ ] Select multiple answers in a conversation
+ - [ ] Compatibility with FreeScout v1.8.156
+ - [ ] Add option for gpt 4o
+ - [ ] Add option for gpt 4o mini
+ - [ ] Additional field to set context for the AI
+ - [ ] Option not only to send customer information, but also previous conversations
 
 ## Contributing
-This is an early version of the FreeScout ChatGPT Integration Module, and we appreciate any feedback, suggestions, or contributions to help improve the module. Please feel free to open issues or submit pull requests on GitHub, or send your messages and suggestions to our email: [support@cloudcenter.ovh](mailto:support@cloudcenter.ovh).
+~~This is an early version of the FreeScout ChatGPT Integration Module, and we appreciate any feedback, suggestions, or contributions to help improve the module. Please feel free to open issues or submit pull requests on GitHub, or send your messages and suggestions to our email: [support@cloudcenter.ovh](mailto:support@cloudcenter.ovh).~~
 
 Together, we can make this integration a valuable addition to the FreeScout ecosystem and enhance the capabilities of helpdesk software for the entire community.
