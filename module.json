@@ -2,7 +2,7 @@
     "name": "HostetskiGPT",
     "alias": "hostetskigpt",
     "description": "Module for requests to GPT",
-    "version": "1.0.5-dev1",
+    "version": "1.0.5-dev2",
     "img": "https://www.hinzke.de/wp-content/uploads/2022/07/2018-13-11-Logo-RGB_Hinzke_Kontur-01.png",
     "detailsUrl": "",
     "author": "Magnus Hinzke",
