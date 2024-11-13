@@ -12,6 +12,7 @@ function hostetskigptInit() {
 	    addModifyPromptAlert();
         if (document.location.pathname.startsWith("/conversation")) {
             const mailbox_id = $("body").attr("data-mailbox_id");
+            updateConversationSummary();
             $.ajax({
                 url: '/hostetskigpt/is_enabled?mailbox=' + mailbox_id,
                 dataType: 'json',
@@ -61,6 +62,11 @@ function hostetskigptInit() {
                 }
             });
         }
+
+        // Event-Listener für neue Nachrichten
+        $(document).on('afterReplyBlock', function() {
+            updateConversationSummary();
+        });
 	});
 }
 
@@ -92,7 +98,7 @@ function generateAnswer(e) {
 function addAnswer(thread_id, text) {
     if (!$(`#thread-${thread_id} .gpt`).length) {
         $(`#thread-${thread_id}`).prepend(`<div class="gpt">
-            <strong>ChatGPT:</strong>
+            <strong>ChatGPT Vorschlag:</strong>
             <br />
             <div class="gpt-answers-data">
                 <div class="gpt-nav">
@@ -190,7 +196,6 @@ async function injectGptAnswer(){
         showFloatingAlert('error', Lang.get("messages.ajax_error"));
     });
 }
-
 function addModifyPromptAlert() {
     $('body').append(`
         <div class="modal fade" aria-hidden="false" tabindex="-1" style="display: none;" id="gpt-prompt-append">
@@ -235,3 +240,97 @@ function hideModifyPromptAlert() {
     $(".modal-backdrop").remove();
     $("#gpt-modified-prompt").val(hostetskiGPTData.start_message);
 }
+
+function updateConversationSummary() {
+    const convMain = $('#conv-layout-main');
+    const conversation_id = $("body").attr("data-conversation_id");
+    const mailbox_id = $("body").attr("data-mailbox_id");
+    
+    $.ajax({
+        url: '/hostetskigpt/is_enabled',
+        data: { mailbox: mailbox_id },
+        success: function(response) {
+            if (response.enabled && convMain.length > 0 && $('.conversation-summary').length === 0) {
+                convMain.prepend(`
+                    <div class="thread conversation-summary">
+                        <div class="thread-message">
+                            <div class="thread-body">
+                                <div class="thread-info">
+                                    <div class="thread-type">
+                                        <i class="glyphicon glyphicon-info-sign"></i>
+                                        <i class="glyphicon glyphicon-refresh refresh-summary" style="cursor: pointer; margin-left: 5px;" title="Zusammenfassung neu generieren"></i>
+                                    </div>
+                                </div>
+                                <div class="thread-content">
+                                    <strong>KI-Zusammenfassung</strong><br>
+                                    <div class="summary-content">
+                                        <img src="/img/loader-tiny.gif" class="gpt-loader" />
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                `);
+
+                // Event-Handler für Refresh-Button
+                $(document).on('click', '.refresh-summary', function() {
+                    $('.summary-content').html('<img src="/img/loader-tiny.gif" class="gpt-loader" />');
+                    $.ajax({
+                        url: '/hostetskigpt/get-summary',
+                        method: 'GET',
+                        data: {
+                            conversation_id: conversation_id,
+                            mailbox_id: mailbox_id,
+                            force_refresh: true,
+                            use_summary_prompt: true
+                        },
+                        success: function(response) {
+                            $('.summary-content').html(response.summary);
+                        },
+                        error: function(xhr) {
+                            $('.summary-content').html('Fehler beim Laden der Zusammenfassung');
+                        }
+                    });
+                });
+
+                // AJAX Call für die Zusammenfassung
+                $.ajax({
+                    url: '/hostetskigpt/get-summary',
+                    method: 'GET',
+                    data: {
+                        conversation_id: conversation_id,
+                        mailbox_id: mailbox_id
+                    },
+                    success: function(response) {
+                        $('.summary-content').html(response.summary);
+                    },
+                    error: function(xhr) {
+                        console.error('Summary error:', xhr);
+                        $('.summary-content').html('Fehler beim Laden der Zusammenfassung');
+                    }
+                });
+            }
+        }
+    });
+}
+
+document.addEventListener('DOMContentLoaded', function() {
+    const summaries = document.querySelectorAll('.conversation-summary');
+    
+    summaries.forEach(summary => {
+        // Wrap content in div
+        const content = summary.innerHTML;
+        summary.innerHTML = `
+            <div class="conversation-summary-content">${content}</div>
+            <span class="conversation-summary-toggle glyphicon glyphicon-chevron-up"></span>
+        `;
+        
+        // Add click handler
+        const toggle = summary.querySelector('.conversation-summary-toggle');
+        toggle.addEventListener('click', () => {
+            summary.classList.toggle('collapsed');
+            toggle.classList.toggle('glyphicon-chevron-up');
+            toggle.classList.toggle('glyphicon-chevron-down');
+        });
+    });
+});

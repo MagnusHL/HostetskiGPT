@@ -59,6 +59,15 @@
             </div>
 
             <div class="form-group">
+                <label class="col-sm-2 control-label">{{ __("Summary Prompt") }}</label>
+
+                <div class="col-sm-6">
+                    <textarea name="summary_prompt" class="form-control" placeholder="Erstelle eine kurze Zusammenfassung..." required>{{ $settings['summary_prompt'] }}</textarea>
+                    <p class="help-block">{{ __('Der Prompt für die KI-Zusammenfassung der Konversation.') }}</p>
+                </div>
+            </div>
+
+            <div class="form-group">
                 <label class="col-sm-2 control-label">{{ __("Model") }}</label>
 
                 <div class="col-sm-6">

@@ -22,6 +22,7 @@ This repository contains the FreeScout ChatGPT Integration Module, which connect
 
 ## Features
 - Generate AI-based responses for each incoming message
+- Support for multiple GPT models (GPT-3.5 Turbo, GPT-4, GPT-4 Turbo, GPT-4 Turbo Preview)
 - Utilize the powerful ChatGPT language model to improve support efficiency
 - Customizable starting message to set the AI's role (e.g., support agent, sales manager, etc.), associate it with your brand, or provide additional context
 
@@ -40,13 +41,12 @@ To use this module, you will need an API key for ChatGPT, which can be obtained 
 
 ## TODO
  - [x] Settings via web interface
- - [x] Loader, which shows that the response is being generated and you have to wait a bit
+ - [x] Loader, which shows that the response is being generated
  - [ ] Multiple prompts
  - [ ] Grammar check
  - [ ] Select multiple answers in a conversation
  - [ ] Compatibility with FreeScout v1.8.156
- - [ ] Add option for gpt 4o
- - [ ] Add option for gpt 4o mini
+ - [x] Add option for GPT-4 models
  - [ ] Additional field to set context for the AI
  - [ ] Option not only to send customer information, but also previous conversations
  - [ ] Show a summary of the conversation at the top of a conversation
