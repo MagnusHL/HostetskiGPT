@@ -2,7 +2,7 @@
     "name": "HostetskiGPT",
     "alias": "hostetskigpt",
     "description": "Module for requests to GPT",
-    "version": "1.0.5-dev2",
+    "version": "1.0.6",
     "img": "Public/img/HostetskiGPT.png",
     "detailsUrl": "",
     "author": "Magnus Hinzke",

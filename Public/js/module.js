@@ -245,16 +245,15 @@ function updateConversationSummary() {
     const convMain = $('#conv-layout-main');
     const conversation_id = $("body").attr("data-conversation_id");
     const mailbox_id = $("body").attr("data-mailbox_id");
-    
     $.ajax({
         url: '/hostetskigpt/is_enabled',
         data: { mailbox: mailbox_id },
         success: function(response) {
             if (response.enabled && convMain.length > 0 && $('.conversation-summary').length === 0) {
                 convMain.prepend(`
-                    <div class="thread conversation-summary">
+                    <div class="thread conversation-summary collapsed">
                         <div class="conversation-summary-header">
-                           <span class="toggle-icon">▼</span> Zusammenfassung 
+                           <span class="toggle-icon">▶</span> Zusammenfassung 
                         </div>
                         <div class="thread-message conversation-summary-content">
                             <div class="thread-body">
@@ -321,6 +320,24 @@ function updateConversationSummary() {
             }
         }
     });
+
+    const originalSummary = $('.conversation-summary');
+    if (originalSummary.length) {
+        originalSummary.addClass('thread thread-type-note');
+        
+        // Header anpassen
+        const header = originalSummary.find('.conversation-summary-header');
+        header.css({
+            'padding': '10px 15px',
+            'display': 'flex',
+            'justify-content': 'space-between',
+            'align-items': 'center'
+        });
+
+        // Content anpassen
+        const content = originalSummary.find('.conversation-summary-content');
+        content.css('padding', '0 15px 10px');
+    }
 }
 
 document.addEventListener('DOMContentLoaded', function() {

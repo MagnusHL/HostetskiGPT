@@ -41,8 +41,8 @@
     margin: 30px;
     padding: 15px 20px;
     border-radius: 4px;
-    background-color: #F8F9D9;
-    border: 1px solid #E1DC3B;
+    background-color: #FEFBF1;
+    border: 1px solid #FFE19C;
     position: relative;
 }
 
@@ -65,5 +65,26 @@
 }
 
 .dm .conversation-summary-toggle {
+    color: #8bb4dd;
+}
+
+.conversation-summary.thread-type-note {
+    margin: 15px 0;
+    background-color: #f8f9fa;
+    border-left: 3px solid #999;
+}
+
+.conversation-summary.thread-type-note .conversation-summary-toggle {
+    cursor: pointer;
+    color: #666;
+}
+
+.dm .conversation-summary.thread-type-note {
+    background-color: #535E68;
+    border-color: #999;
+    color: #e4e6eb;
+}
+
+.dm .conversation-summary.thread-type-note .conversation-summary-toggle {
     color: #8bb4dd;
 }

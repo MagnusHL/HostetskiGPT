@@ -49,7 +49,7 @@ To use this module, you will need an API key for ChatGPT, which can be obtained 
  - [x] Add option for GPT-4 models
  - [ ] Additional field to set context for the AI
  - [ ] Option not only to send customer information, but also previous conversations
- - [ ] Show a summary of the conversation at the top of a conversation
+ - [X] Show a summary of the conversation at the top of a conversation
  - [ ] Option to disable summary generation
 
 ## Contributing
