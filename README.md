@@ -50,6 +50,7 @@ To use this module, you will need an API key for ChatGPT, which can be obtained 
  - [ ] Additional field to set context for the AI
  - [ ] Option not only to send customer information, but also previous conversations
  - [ ] Show a summary of the conversation at the top of a conversation
+ - [ ] Option to disable summary generation
 
 ## Contributing
 ~~This is an early version of the FreeScout ChatGPT Integration Module, and we appreciate any feedback, suggestions, or contributions to help improve the module. Please feel free to open issues or submit pull requests on GitHub, or send your messages and suggestions to our email: [support@cloudcenter.ovh](mailto:support@cloudcenter.ovh).~~

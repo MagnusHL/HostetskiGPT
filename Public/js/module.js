@@ -253,16 +253,17 @@ function updateConversationSummary() {
             if (response.enabled && convMain.length > 0 && $('.conversation-summary').length === 0) {
                 convMain.prepend(`
                     <div class="thread conversation-summary">
-                        <div class="thread-message">
+                        <div class="conversation-summary-header">
+                           <span class="toggle-icon">▼</span> Zusammenfassung 
+                        </div>
+                        <div class="thread-message conversation-summary-content">
                             <div class="thread-body">
-                                <div class="thread-info">
-                                    <div class="thread-type">
-                                        <i class="glyphicon glyphicon-info-sign"></i>
-                                        <i class="glyphicon glyphicon-refresh refresh-summary" style="cursor: pointer; margin-left: 5px;" title="Zusammenfassung neu generieren"></i>
-                                    </div>
-                                </div>
                                 <div class="thread-content">
-                                    <strong>KI-Zusammenfassung</strong><br>
+                                    <div class="thread-info">
+                                        <div class="thread-type">
+                                            <i class="glyphicon glyphicon-refresh refresh-summary" style="cursor: pointer;" title="Zusammenfassung neu generieren"></i>
+                                        </div>
+                                    </div>
                                     <div class="summary-content">
                                         <img src="/img/loader-tiny.gif" class="gpt-loader" />
                                     </div>
@@ -271,6 +272,14 @@ function updateConversationSummary() {
                         </div>
                     </div>
                 `);
+
+                // Click Handler für Ein-/Ausklappen
+                $('.conversation-summary-header').on('click', function() {
+                    const summary = $(this).closest('.conversation-summary');
+                    summary.toggleClass('collapsed');
+                    const icon = $(this).find('.toggle-icon');
+                    icon.text(summary.hasClass('collapsed') ? '▶' : '▼');
+                });
 
                 // Event-Handler für Refresh-Button
                 $(document).on('click', '.refresh-summary', function() {
